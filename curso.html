@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Cursos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 py-6">
+            <h1 class="text-2xl font-bold text-gray-900">MEUS CURSOS</h1>
+        </div>
+    </header>
+    <main class="max-w-7xl mx-auto px-4 py-6">
+        <div id="loading" class="hidden">
+            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto"></div>
+        </div>
+        <div id="courses" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Cursos serão carregados aqui -->
+        </div>
+    </main>
+
+    <script>
+        const loading = document.getElementById('loading');
+        const coursesContainer = document.getElementById('courses');
+
+        function showLoading() {
+            loading.classList.remove('hidden');
+            coursesContainer.classList.add('hidden');
+        }
+
+        function hideLoading() {
+            loading.classList.add('hidden');
+            coursesContainer.classList.remove('hidden');
+        }
+
+        // Simulando o carregamento dos cursos
+        showLoading();
+        setTimeout(() => {
+            hideLoading();
+            // Adicionando cursos de exemplo (substitua com dados reais)
+            coursesContainer.innerHTML = `
+                <div class="bg-white rounded-lg shadow hover:shadow-lg transition-shadow flex flex-col sm:flex-row">
+                    <div class="sm:w-1/2">
+                        <img src="src/img/doutor.png" alt="Capa do Curso" class="h-full w-full object-cover rounded-t-lg sm:rounded-l-lg sm:rounded-t-none">
+                    </div>
+                    <div class="p-6 sm:w-1/2 flex flex-col justify-between">
+                        <div>
+                            <h2 class="text-xl font-semibold mb-2">Curso 1</h2>
+                            <p class="text-gray-600">Descrição do curso 1. Aproveite para aprender novas habilidades!</p>
+                        </div>
+                        <button 
+                            class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 self-start" 
+                            data-course="Curso 1" 
+                            onclick="redirectToWhatsApp(event)">
+                            Acessar
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow hover:shadow-lg transition-shadow flex flex-col sm:flex-row">
+                    <div class="sm:w-1/2">
+                        <img src="src/img/doutor.png" alt="Capa do Curso" class="h-full w-full object-cover rounded-t-lg sm:rounded-l-lg sm:rounded-t-none">
+                    </div>
+                    <div class="p-6 sm:w-1/2 flex flex-col justify-between">
+                        <div>
+                            <h2 class="text-xl font-semibold mb-2">Curso 2</h2>
+                            <p class="text-gray-600">Descrição do curso 2. Explore conteúdos incríveis!</p>
+                        </div>
+                        <button 
+                            class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 self-start" 
+                            data-course="Curso 2" 
+                            onclick="redirectToWhatsApp(event)">
+                            Acessar
+                        </button>
+                    </div>
+                </div>
+            `;
+        }, 1000);
+
+        function redirectToWhatsApp(event) {
+            const button = event.target;
+            const courseName = button.getAttribute('data-course');
+            const phone = '5527996867898'; // Substitua pelo número do seu WhatsApp (sem espaços ou símbolos, incluindo o DDD e código do país)
+            const message = `Olá, gostaria de saber mais sobre o curso ${courseName}`;
+            const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+</body>
+</html>
