@@ -29,7 +29,83 @@
 
 
 	<style type="text/css">
-		
+
+		 /* Estilo do aviso */
+		 .notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #343a40;
+      color: #fff;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+      font-size: 14px;
+      max-width: 90%; /* Ajusta para telas menores */
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .notification.hidden {
+      transform: translateY(100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .notification a {
+      color: #4360f0;
+      font-weight: bold;
+      text-decoration: none;
+      margin-left: 5px;
+      word-wrap: break-word; /* Quebra o texto em telas menores */
+    }
+
+    .notification a:hover {
+      text-decoration: underline;
+    }
+
+    /* Botão de fechar com imagem */
+    .notification button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin-left: 10px;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .notification button img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Garante que a imagem do "X" se ajuste corretamente */
+    }
+
+    .notification button:hover img {
+      filter: brightness(0.8); /* Efeito visual ao passar o mouse */
+    }
+
+    /* Responsividade */
+    @media screen and (max-width: 768px) {
+      .notification {
+        bottom: 10px;
+        right: 10px;
+        font-size: 12px;
+        padding: 10px 15px;
+      }
+
+      .notification button {
+        width: 15px;
+        height: 15px;
+      }
+    }
+
 		a { text-decoration: none !important; color: #444; transition: all 0.3s ease; }
 		a:hover { text-decoration: none !important; color: #C94E47 !important; }
 
@@ -84,7 +160,7 @@
 		.titulo-15 {
 
 			
-			background-image: url('src/img/fotoortopedica.jpg');
+			background-image: url('src/img/ortopedica.png');
 			background-color: #F4F4F2;
 			background-size: cover;
 			background-position: center center;
@@ -361,10 +437,16 @@
 		
 		
 		<div class="title-pc">
-			 <div style="width: 500px; height: 150px; display: inline-block; background-image: url(src/img/pixelcut-export.png); background-size: cover; background-repeat: no-repeat; background-position: center center"></div><br><br> 			<div style="font-size: 45px; display: inline-block; line-height: 130%; font-family: &#39;IBM Plex Sans&#39;, sans-serif; font-weight: 600;">Fisioterapeuta Mateus Ribeiro</div><br><br> 			<div style="font-size: 30px; display: inline-block; line-height: 130%; font-family: &#39;IBM Plex Sans&#39;, sans-serif; font-weight: 500;">Trauma-Ortopedico</div><br><br> 			<div style="font-size: 20px; display: inline-block; line-height: 130%; font-family: &#39;IBM Plex Sans&#39;, sans-serif; font-weight: 400;">Reabilitação - Autonomia - Regeneração - Reintegração</div><br><br> 			<div class="botao" onclick="mensagem()">Agende sua consulta!</div><br> 		</div>
+			 <div style="width: 500px; height: 250px; display: inline-block; background-image: url(src/img/Logo.png); background-size: cover; background-repeat: no-repeat; background-position: center center"></div><br><br> 			
+			 <div style="font-size: 45px; display: inline-block; line-height: 130%; font-family: &#39;IBM Plex Sans&#39;, sans-serif; font-weight: 600;">Fisioterapeuta Mateus Ribeiro</div><br><br> 			
+			 <div style="font-size: 30px; display: inline-block; line-height: 130%; font-family: &#39;IBM Plex Sans&#39;, sans-serif; font-weight: 500;">Trauma-Ortopédico</div><br><br>	
+			 <div class="botao" onclick="mensagem()">Agende sua consulta!</div><br> 		</div>
 		
 		<div class="title-mobile">
-			<div style="width: 100%; height: 160px; display: inline-block; background-image: url(src/img/pixelcut-export.png); background-size: cover; background-repeat: no-repeat; background-position: center center;"></div><br><br>			<div style="font-size: 35px; display: inline-block; line-height: 130%; font-family: &#39;IBM Plex Sans&#39;, sans-serif; font-weight: 600;">Fisioterapeuta Mateus Ribeiro</div><br><br> 			<div style="font-size: 25px; display: inline-block; line-height: 130%; font-family: &#39;IBM Plex Sans&#39;, sans-serif; font-weight: 500;">Trauma-Ortopedico</div><br><br> 			<div style="font-size: 20px; display: inline-block; line-height: 130%; font-family: &#39;IBM Plex Sans&#39;, sans-serif; font-weight: 400;">Reabilitação - Autonomia - Regeneração - Reintegração</div><br><br> 			<div class="botao" onclick="mensagem()">Agende sua consulta!</div><br> 
+			<div style="width: 100%; height: 180px; display: inline-block; background-image: url(src/img/Logo.png); background-size: cover; background-repeat: no-repeat; background-position: center center;"></div><br><br>			
+			<div style="font-size: 35px; display: inline-block; line-height: 130%; font-family: &#39;IBM Plex Sans&#39;, sans-serif; font-weight: 600;">Fisioterapeuta Mateus Ribeiro</div><br><br> 			
+			<div style="font-size: 25px; display: inline-block; line-height: 130%; font-family: &#39;IBM Plex Sans&#39;, sans-serif; font-weight: 500;">Trauma-Ortopédico</div><br><br> 
+			<div class="botao" onclick="mensagem()">Agende sua consulta!</div><br> 
 		</div>
 
 	</div>
@@ -416,10 +498,10 @@
 
 		<div class="social" id="whatsappButton" onclick="LinkUrl(&#39;https://api.whatsapp.com/send?phone=5527996867898&#39;)">
             <img src="src/img/whatsapp.png" style="width: 80%; max-width: 100px"><br><br>
-            Envie uma mensagem
+            whatsapp
           </div>
-                  <div class="social" onclick="LinkUrl(&#39;https://instagram.com/mt_ribeiro01&#39;)"><img src="src/img/instagram.png" style="width: 80%; max-width: 100px"><br><br>@mt_ribeiro01</div>		
-                  <div class="social" onclick="LinkUrl(&#39;https://fb.com/seufacebook&#39;)"><img src="src/img/facebook.png" style="width: 80%; max-width: 100px"><br><br>NutricionistaArthurPrata</div>		
+                  <div class="social" onclick="LinkUrl(&#39;https://instagram.com/mt_ribeiro01&#39;)"><img src="src/img/instagram.png" style="width: 80%; max-width: 100px"><br><br>@instagram</div>		
+                  <div class="social" onclick="LinkUrl(&#39;https://fb.com/seufacebook&#39;)"><img src="src/img/facebook.png" style="width: 80%; max-width: 100px"><br><br>Facebook</div>		
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -553,7 +635,8 @@
     
 
 		
-		
+		<br>
+		<br>
 		<div class="contact-card">
 			
 			<div style="width: 90%;" class="contact-card-right-pc">
@@ -575,26 +658,11 @@
 			</div>		
 
 			<div style="width: 90%;" class="contact-card-right-mobile">
-			
-				<br><hr><div style="font-size: 30px"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
 
-				<div style="margin-bottom: 5px;">
-					<h3 style="text-align: center; margin-bottom: 50px;">Endereço</h3>
-					<div style="width: 300px; height: 300px; margin: 0 auto; position: relative;">
-						<iframe 
-							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.139253156508!2d-40.06297182465722!3d-19.39410013701206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb81e7be5f3b117%3A0x3ed0a7b92ec2c5ed!2sAv.%20Pres.%20Get%C3%BAlio%20Vargas%2C%201220%20-%20Centro%2C%20Linhares%20-%20ES%2C%2029900-210!5e0!3m2!1spt-BR!2sbr!4v1696775123456!5m2!1spt-BR!2sbr"
-							width="100%" 
-							height="100%" 
-							style="border: 0; border-radius: 20px;" 
-							allowfullscreen="" 
-							loading="lazy" 
-							referrerpolicy="no-referrer-when-downgrade">
-						</iframe>
-					</div>
-				</div>
-				 				
-				<br><br><div style="font-size: 30px"><i class="fa fa-phone" aria-hidden="true"></i></div>(27)99686-7898 				
-				<br><br><div style="font-size: 30px"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>mateussantosribeiro6@gmail.com 
+				<br><hr><div style="font-size: 40px"><i class="fa fa-map-marker" aria-hidden="true"></i></div>LINHARES - Avenida Presidente Getúlio Vargas, 1220 - Laguna Center - Torre A, Salas B (Clínica) - Centro, Linhares - ES, 29900-210;
+				<br><br><div style="font-size: 40px"><i class="fa fa-phone" aria-hidden="true"></i></div>(27)99686-7898 				
+				<br><br><div style="font-size: 40px"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>mateussantosribeiro6@gmail.
+				 
 			</div>		
 
 		</div>
@@ -602,11 +670,23 @@
 		
 	</div>
 
-	
+	<!-- Notificação para promover o trabalho -->
+  <div id="custom-notification" class="notification hidden">
+    <span>
+      Se quiser um site como esse, 
+      <a href="https://wa.me/5527996867898?text=Olá, gostei do seu trabalho e quero um site como este!" target="_blank">
+        entre em contato comigo
+      </a>!
+    </span>
+    <button id="close-notification" aria-label="Fechar aviso">
+      <img src="src/img/close.png" alt="Fechar aviso" />
+    </button>
+  </div>
 
 	<br>
+	<br>
 
-	<span style="font-size: 12px; color: #999">Este site foi desenvolvido por Mateus Ribeiro. Todos os direitos estão reservados.</span>
+	<span style="font-size: 12px; color: #999">Este site foi desenvolvido por Mateus Ribeiro - Desenvolvedor Web. Todos os direitos estão reservados.</span>
 
 	<br><br>
 
@@ -703,6 +783,27 @@
 
 	}
 
+	document.addEventListener("DOMContentLoaded", () => {
+      const notification = document.getElementById("custom-notification");
+      const closeButton = document.getElementById("close-notification");
+
+      // Detectar quando o usuário chega ao final da página
+      window.addEventListener("scroll", () => {
+        const scrolledToBottom =
+          window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
+
+        if (scrolledToBottom) {
+          notification.classList.remove("hidden");
+        } else {
+          notification.classList.add("hidden");
+        }
+      });
+
+      // Fechar o aviso ao clicar no botão "X"
+      closeButton.addEventListener("click", () => {
+        notification.classList.add("hidden");
+      });
+    });
 
 </script>
 
